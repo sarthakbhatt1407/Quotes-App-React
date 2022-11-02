@@ -29,13 +29,13 @@ const Header = () => {
       <Logo src={logo} />
       {/* Links */}
       <LinksBox>
-        <NavLink activeClassName="nav-active-link" to="all-quotes">
+        <NavLink activeClassName="nav-active-link" to="/all-quotes">
           <Links>All Quotes</Links>
         </NavLink>
-        <NavLink activeClassName="nav-active-link" to="add-new-quote">
+        <NavLink activeClassName="nav-active-link" to="/add-new-quote">
           <Links>Add New Quote</Links>
         </NavLink>
-        <NavLink activeClassName="nav-active-link" to="online-quotes">
+        <NavLink activeClassName="nav-active-link" to="/online-quotes">
           <Links>Online Quotes</Links>
         </NavLink>
       </LinksBox>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import OnlineQuote from "../components/OnlineQuote";
 import Quote from "../components/Quote";
 const AllQuoteBox = styled.div`
   /* background-color: red; */
@@ -39,7 +40,7 @@ const OnlineQuotes = () => {
       {quotes.length < 1 && <p>Empty</p>}
       {quotes.map((item) => {
         if (item.person) {
-          return <Quote key={item.id} item={item} />;
+          return <OnlineQuote key={item.id} item={item} />;
         }
       })}
     </AllQuoteBox>

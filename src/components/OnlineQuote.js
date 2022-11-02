@@ -40,22 +40,24 @@ const Button = styled.button`
   font-size: 16px;
 `;
 
-const Quote = (props) => {
+const OnlineQuote = (props) => {
   const { quoteLine, id, person } = props.item;
-  const dispatch = useDispatch();
-  const onClickHandler = () => {
-    dispatch({ type: "remove", item: props.item });
+
+  const onClickHandler = (e) => {
+    const eleId = e.target.parentElement.id;
+    const parentElement = document.getElementById(`${eleId}`);
+    parentElement.style.display = "none";
   };
   return (
-    <QuoteBox>
+    <QuoteBox id={id}>
       <CrossSymbol onClick={onClickHandler}>&#9587;</CrossSymbol>
       <QuotePara>{`"${quoteLine}"`}</QuotePara>
       <QuoteCredit>~ {`${person}`}</QuoteCredit>
-      <Link to={`/all-quotes/${id}`}>
+      <Link to={`/online-quotes/${id}`}>
         <Button>Fullscreen</Button>
       </Link>
     </QuoteBox>
   );
 };
 
-export default Quote;
+export default OnlineQuote;
