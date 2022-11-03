@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
 import QuoteForm from "../components/QuoteForm";
 const AddQuoteBox = styled.div`
@@ -12,7 +11,6 @@ const AddQuoteBox = styled.div`
 `;
 
 const AddQuote = () => {
-  const items = useSelector((state) => state.items);
   return (
     <AddQuoteBox>
       <h2>Add a new quote</h2>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Quote from "../components/Quote";
@@ -38,12 +38,12 @@ const AllQuotes = () => {
       }
     };
     fetcher();
-  }, []);
+  });
 
   return (
     <AllQuoteBox>
       <h1>Your Quotes</h1>
-      {quotes.length < 1 && <p>Empty</p>}
+      {quotes.length < 1 && <p>Loading</p>}
       {quotes.map((item) => {
         return <Quote key={item.id} item={item} />;
       })}
