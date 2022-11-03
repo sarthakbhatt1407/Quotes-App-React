@@ -26,6 +26,7 @@ const QuotePara = styled.p`
   letter-spacing: 0.09rem;
   font-style: italic;
   text-transform: capitalize;
+  text-align: center;
   @media (max-width: 450px) {
     font-size: 1.05rem;
     letter-spacing: 0.04rem;

@@ -22,9 +22,26 @@ const AllQuoteBox = styled.div`
     }
   }
 `;
+const Loader = styled.div`
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
 
 const OnlineQuotes = () => {
   const [quotes, setQuotes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const arr = [];
   const fetcher = async () => {
     let id = 0;
@@ -41,12 +58,13 @@ const OnlineQuotes = () => {
       id++;
     }
     setQuotes(arr);
+    setIsLoading(false);
   };
   fetcher();
   return (
     <AllQuoteBox>
       <h1>Online Quotes</h1>
-      {quotes.length < 1 && <p>Empty</p>}
+      {isLoading && <Loader></Loader>}
       {quotes.map((item) => {
         if (item.person) {
           return <OnlineQuote key={item.id} item={item} />;

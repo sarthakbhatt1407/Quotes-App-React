@@ -12,6 +12,7 @@ const QuoteBox = styled.div`
   width: 50%;
   position: relative;
   padding: 0.2rem 3rem;
+
   @media (max-width: 450px) {
     padding: 1rem 0.7rem;
     width: 90%;
@@ -25,6 +26,7 @@ const QuotePara = styled.p`
   font-size: 1.2rem;
   letter-spacing: 0.09rem;
   font-style: italic;
+  text-align: center;
   text-transform: capitalize;
   @media (max-width: 450px) {
     font-size: 1.05rem;
