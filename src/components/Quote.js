@@ -12,16 +12,35 @@ const QuoteBox = styled.div`
   width: 50%;
   position: relative;
   padding: 0.2rem 3rem;
+  @media (max-width: 450px) {
+    padding: 1rem 0.7rem;
+    width: 90%;
+  }
+  @media only screen and (min-width: 451px) and (max-width: 1020px) {
+    width: 80%;
+  }
 `;
+
 const QuotePara = styled.p`
   font-size: 1.2rem;
   letter-spacing: 0.09rem;
   font-style: italic;
   text-transform: capitalize;
+  @media (max-width: 450px) {
+    font-size: 1.05rem;
+    letter-spacing: 0.04rem;
+  }
+  @media only screen and (min-width: 451px) and (max-width: 1020px) {
+    font-size: 1.1rem;
+    letter-spacing: 0.06rem;
+  }
 `;
 const QuoteCredit = styled.p`
   font-weight: bold;
   text-transform: capitalize;
+  @media (max-width: 450px) {
+    font-weight: 600;
+  }
 `;
 const CrossSymbol = styled.button`
   border: none;
@@ -38,6 +57,16 @@ const Button = styled.button`
   border-radius: 0.3rem;
   color: white;
   font-size: 16px;
+  @media (max-width: 450px) {
+    padding: 0.2rem 0.4rem;
+    font-size: 13px;
+    margin-bottom: 0.5rem;
+  }
+  @media only screen and (min-width: 451px) and (max-width: 1020px) {
+    padding: 0.2rem 0.4rem;
+    font-size: 14px;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const Quote = (props) => {

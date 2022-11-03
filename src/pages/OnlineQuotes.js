@@ -4,7 +4,6 @@ import styled from "styled-components";
 import OnlineQuote from "../components/OnlineQuote";
 import Quote from "../components/Quote";
 const AllQuoteBox = styled.div`
-  /* background-color: red; */
   padding: 0.8rem 2rem;
   display: flex;
   flex-direction: column;
@@ -12,6 +11,16 @@ const AllQuoteBox = styled.div`
   height: 80vh;
   overflow: auto;
   gap: 2rem;
+  @media (max-width: 450px) {
+    & h1 {
+      font-size: 1.5rem;
+    }
+  }
+  @media only screen and (min-width: 451px) and (max-width: 1020px) {
+    & h1 {
+      font-size: 1.7rem;
+    }
+  }
 `;
 
 const OnlineQuotes = () => {
