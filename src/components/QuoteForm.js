@@ -7,6 +7,10 @@ const Form = styled.form`
   width: 40%;
   border-radius: 0.5rem;
   background-color: rgb(252, 247, 244);
+  @media (max-width: 650px) {
+    width: 55%;
+    padding: 3rem 3rem;
+  }
 `;
 
 const InpLabBox = styled.div`

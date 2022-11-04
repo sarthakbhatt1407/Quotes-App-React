@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Quote from "../components/Quote";
@@ -7,7 +7,7 @@ const AllQuoteBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
+  height: 89vh;
   overflow: auto;
   gap: 2rem;
   @media (max-width: 450px) {
@@ -40,7 +40,7 @@ const Loader = styled.div`
 
 const AllQuotes = () => {
   const quotes = useSelector((state) => state.items);
-
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   let arr = [];
   useEffect(() => {
@@ -58,18 +58,18 @@ const AllQuotes = () => {
         };
         arr.push(fields);
       }
-
+      setIsLoading(false);
       for (const item of arr) {
         dispatch({ type: "add", item: { ...item } });
       }
     };
     fetcher();
-  });
+  }, []);
 
   return (
     <AllQuoteBox>
       <h1>Your Quotes</h1>
-      {!quotes.length > 0 && <Loader></Loader>}
+      {isLoading && !quotes.length > 0 && <Loader></Loader>}
 
       {quotes.map((item) => {
         return <Quote key={item.id} item={item} />;

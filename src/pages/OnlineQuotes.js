@@ -8,7 +8,7 @@ const AllQuoteBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
+  height: 89vh;
   overflow: auto;
   gap: 2rem;
   @media (max-width: 450px) {

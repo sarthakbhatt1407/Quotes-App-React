@@ -4,10 +4,14 @@ import QuoteForm from "../components/QuoteForm";
 const AddQuoteBox = styled.div`
   display: flex;
   flex-direction: column;
-  /* background-color: red; */
   height: 80vh;
   justify-content: start;
   align-items: center;
+  @media (max-width: 650px) {
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 const AddQuote = () => {
