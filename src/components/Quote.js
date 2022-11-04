@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 const QuoteBox = styled.div`
@@ -73,8 +73,12 @@ const Button = styled.button`
 
 const Quote = (props) => {
   const { quoteLine, id, person } = props.item;
+  const quotes = useSelector((state) => state.items);
   const dispatch = useDispatch();
   const onClickHandler = () => {
+    if (quotes.length < 2) {
+      localStorage.clear();
+    }
     dispatch({ type: "remove", item: props.item });
   };
   return (

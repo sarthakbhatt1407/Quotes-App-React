@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 const Form = styled.form`
@@ -55,6 +55,7 @@ const QuoteForm = () => {
     quoteLine: "",
     person: "",
   };
+  const quotes = useSelector((state) => state.items);
   const [inputFields, setInputFields] = useState(defaultInpFields);
 
   const onChangeHandler = (e) => {
@@ -85,6 +86,7 @@ const QuoteForm = () => {
   const submitHandler = () => {
     const quoteLine = document.getElementById("quoteLine").value;
     const person = document.getElementById("person").value;
+
     if (quoteLine.trim().length > 0 && person.trim().length > 0) {
       return true;
     } else {
@@ -96,21 +98,9 @@ const QuoteForm = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (submitHandler()) {
-      const fetcher = async () => {
-        const requestOptions = {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(inputFields),
-        };
-        const resp = await fetch(
-          "https://quote-app-react-default-rtdb.firebaseio.com/quotes.json",
-          requestOptions
-        );
-      };
-      fetcher();
       dispatch({ type: "add", item: { ...inputFields } });
-
       setInputFields(defaultInpFields);
+      console.log(quotes);
 
       history.push("/all-quotes");
     } else {

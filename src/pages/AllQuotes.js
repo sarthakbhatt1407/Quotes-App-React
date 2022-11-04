@@ -21,55 +21,30 @@ const AllQuoteBox = styled.div`
     }
   }
 `;
-const Loader = styled.div`
-  border: 4px solid #f3f3f3; /* Light grey */
-  border-top: 4px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 2s linear infinite;
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-`;
 
 const AllQuotes = () => {
   const quotes = useSelector((state) => state.items);
-  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
-  let arr = [];
   useEffect(() => {
-    const fetcher = async () => {
-      const resp = await fetch(
-        "https://quote-app-react-default-rtdb.firebaseio.com/quotes.json"
-      );
-      const data = await resp.json();
-
-      for (const item in data) {
-        const fields = {
-          id: item,
-          person: data[item]["person"],
-          quoteLine: data[item]["quoteLine"],
-        };
-        arr.push(fields);
+    const fetcher = () => {
+      if (quotes.length > 0) {
+        localStorage.setItem("qoutes", JSON.stringify(quotes));
       }
-      setIsLoading(false);
-      for (const item of arr) {
-        dispatch({ type: "add", item: { ...item } });
+      const localArr = JSON.parse(localStorage.getItem("qoutes"));
+
+      if (localArr) {
+        for (const item of localArr) {
+          dispatch({ type: "add", item: { ...item } });
+        }
       }
     };
     fetcher();
-  }, []);
+  }, [quotes]);
 
   return (
     <AllQuoteBox>
       <h1>Your Quotes</h1>
-      {isLoading && !quotes.length > 0 && <Loader></Loader>}
+      {quotes.length < 1 && <p>No quotes</p>}
 
       {quotes.map((item) => {
         return <Quote key={item.id} item={item} />;
